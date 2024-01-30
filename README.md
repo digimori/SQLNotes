@@ -45,3 +45,31 @@ SELECT * FROM tableName;
 - Table: Collection of data organised into rows and columns (These are sometimes referred to as relations).
 - Column: A set of data values of a particular type. In the above example, ModelNo, ProductName,ProductPrice etc are the columns.
 - Row: Single record in the table, ie, from the above has a ModelNo of 111, a ProductName of Chair etc
+
+### Data Types:
+- All data stored in a relational database is of some data type or another. For example:
+ - INTEGER - A positive or negative whole number
+ - TEXT - A string
+ - DATE - Dates (Formatted in: YYYY-MM-DD)
+ - REAL - Decimal values (Float numbers)
+
+## Data Manipulation - Statements:
+- A statement is a syntax that the database will recognise as a valid command and will always end in a semi-colon (;).
+
+  Example:
+```
+CREATE TABLE tableName (
+column1 dataType,
+column2 dataType,
+column3, dataType
+);
+```
+
+A breakdown of the components used in the above example:
+1. CREATE TABLE - This is a clause (Clauses are commands which perform specific tasks in SQL and by convention, always use capital letters)
+   - Example of Clauses is the SELECT and FROM in a SELECT * FROM tableName statement.   
+2. tableName - This is referring to the name of the table (Like the above example with Products and Sales)
+3. The data contained in the body of the statement () is a parameter which contains a list of columns and the datatypes being used within them (or, associated data type)
+   - Statements can be written as one line or multiple, this can vary depending on the size and readability required.
+  
+   
