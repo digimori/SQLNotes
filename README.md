@@ -195,3 +195,43 @@ region TEXT DEFAULT 'Teyvat'
 );
 ```
 - In the above, we have designated the id column as the Primary Key, the archonName to have NOT NULL which means that they cannot be empty and a DEFAULT with the region, meaning if no region is entered, it will default this column to 'Teyvat'.
+
+# Queries
+- Using SQL commands to query a database (Retrieve data from a database)
+
+As an example, we can use the following dataset to show query examples:
+Table: relics
+
+|ID| relicName | twoPiece | fourPiece | area |
+|-----|-----|------|-----|-----|
+|1| Watchmaker, Master of Dream Machinations | Increases Break Effect by 16%. | When the wearer uses their Ultimate on an ally, all allies' Break Effect increases by 30% for 2 turn(s). This effect cannot be stacked. | Path of Dream Dive |
+|2| Pioneer Diver of Dead Waters | Increases DMG dealt to enemies with debuff by 12%. | Increases CRIT Rate by 4%. The wearer deals 8%/12% increased CRIT DMG to enemies with at least 2/3 debuffs. After the wearer inflicts a debuff on enemy targets, the aforementioned effects increase by 100%, lasting for 1 turn(s). | Path of Dream Dive |
+|3| Passerby of Wandering Cloud | Increases Outgoing Healing by 10%. | At the beginning of the battle, immediately regenerates 1 Skill Point. | Path of Drifting |
+|4| Prisoner in Deep Confinement | ATK increases by 12% | For every DoT the target enemy is afflicted with, the wearer will ignore 6% of its DEF when dealing DMG to it. This effect is valid for a max of 3 DoTs. | Path of Darkness |
+
+```
+SELECT * FROM relics
+```
+- The above is selecting all entries/records from the "relics" table.
+- SELECT is used whenever you want to start a query with the database
+- * is a wildcard meaning "All"
+- FROM is stating where you want to query this information from, in which this instance is the "relics" table
+  
+In the instance, for example, that we are only interested in two columns (columns 1 and 2. ID and relicName), we can break down the query like so:
+```
+SELECT column1, column2
+FROM table_name;
+
+or, as with the above table:
+SELECT ID, relicName
+FROM relics;
+```
+
+## Queries: 'AS'
+- 'AS' is a keyword that allows a column or table to be renamed using an alias. This alias is not a change to the column, but merely gives it an alternate name to display (To look a bit more clean).
+- Using the above example, we can change 'area' to 'CavernOfCorrosion'
+```
+SELECT area AS 'CavernOfCorrosion'
+FROM relics;
+```
+- Bear in mind that the use of quotation marks can vary with different Databases. The above works in SQLite, but may vary between either no or double quotes for PostgreSQL.
