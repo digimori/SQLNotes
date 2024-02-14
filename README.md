@@ -235,3 +235,56 @@ SELECT area AS 'CavernOfCorrosion'
 FROM relics;
 ```
 - Bear in mind that the use of quotation marks can vary with different Databases. The above works in SQLite, but may vary between either no or double quotes for PostgreSQL.
+
+## Queries: 'DISTINCT'
+- 'DISTINCT' is used to return unique values in its output. It filters out all duplicate values in the columns specified in the query.
+Example:
+```
+SELECT tools FROM inventory;
+```
+- This may produce values such as:
+    - hammer, nails, nails, nails, wrench
+  - It will not put nails as a single entity despite there being multiple. And given distinct is often used to find out what different (distinct) values exist in a column, this method can become unruly when there are multiples of each item.
+  - To fix this, we use DISTINCT:
+
+```
+SELECT DISTINCT tools FROM inventory;
+```
+
+- This will now produce, going on the example previous: hammer, nails, wrench, as it has chosen only the distinct value of nails and not every entry containing it as it was doing before.
+
+
+## Queries: WHERE
+- The WHERE clause allows us to restrict queries in order to oinly obtain the select information that we want from the table
+- ie:
+```
+SELECT * FROM music WHERE song_rating > 5;
+```
+- This above example will filter the music table to only display the information from the column in where the song_rating is greater than 5.
+- You can use other operators for this, ie: =, !=, <, >, >=, <= as you would in languages such as JavaScript (Like JS, there are special operators also).
+
+## Queries: LIKE I
+- Can be used to compare similar values.
+- As an example below, for a movie table, there may be two movies with similar titles such as 'Seven' and 'Se7en'.
+- You can use Like to select all movies that start with both "se" and end with "en" and have exactly one character in the middle so that we don't bring up every movie ever with those parameters.
+- This is where we use LIKE to evaluate the selected column for a sepcific pattern, ie: 'Se_en'. The _ allows substitution of any individual character without breaking up the pattern.
+
+```
+SELECT * FROM movies WHERE name LIKE 'Se_en';
+```
+
+Queries: LIKE II
+- Another comparison, but with the use of a different pattern wildcard: %
+- It is NOT Case sensitive
+- So by using it, we can filter a table to select only the results that begin with the letter A:
+```
+SELECT * FROM movies WHERE name LIKE 'A%';
+```
+- This is also the case in reverse, so to search for anything ending in 'a': %a
+- It can also be used as a before and after pattern:
+
+```
+SELECT * FROM movies WHERE name LIKE '%man%';
+```
+- This will bring up every result where the letters 'man' appear. This can be anything from 'Spiderman' to 'The Human Centipede'.
+- Bear in mind, you may also need to apply spaces. So if you are looking for something that comes after "The", you will need to add a space before %.
